@@ -2,6 +2,16 @@
 require_once 'sesiones.php';
 require_once 'conexion.php';
 
+// Manejar mensajes de contacto
+$mensaje_contacto = '';
+$error_contacto = '';
+if (isset($_GET['mensaje_enviado']) && $_GET['mensaje_enviado'] == '1') {
+    $mensaje_contacto = $_GET['mensaje'] ?? 'Tu mensaje ha sido enviado correctamente. Te contactaremos pronto.';
+}
+if (isset($_GET['error_contacto'])) {
+    $error_contacto = $_GET['error_contacto'];
+}
+
 // Obtener configuración del sitio
 try {
     $stmt = $conexion->prepare("SELECT * FROM configuracion_sitio WHERE id = 1");
@@ -64,26 +74,36 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body class="<?= $config ? 'color-' . $config['color_esquema'] : 'color-azul' ?>">
+    
+    <!-- Mensajes de contacto -->
+    <?php if ($mensaje_contacto): ?>
+        <div style="background: #d4edda; color: #155724; padding: 15px; text-align: center; position: relative;">
+            <i class="fas fa-check-circle"></i> <?= htmlspecialchars($mensaje_contacto) ?>
+            <button onclick="this.parentElement.style.display='none'" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #155724; font-size: 18px; cursor: pointer;">×</button>
+        </div>
+    <?php endif; ?>
+    
+    <?php if ($error_contacto): ?>
+        <div style="background: #f8d7da; color: #721c24; padding: 15px; text-align: center; position: relative;">
+            <i class="fas fa-exclamation-circle"></i> <?= htmlspecialchars($error_contacto) ?>
+            <button onclick="this.parentElement.style.display='none'" style="position: absolute; right: 15px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #721c24; font-size: 18px; cursor: pointer;">×</button>
+        </div>
+    <?php endif; ?>
+    
     <!-- Header -->
     <header class="header">
         <div class="header-container">
             <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <div class="logo-text">
-                    <h1><?= $config ? htmlspecialchars($config['nombre_sitio']) : 'UTH SOLUTIONS' ?></h1>
-                    <p>REAL STATE</p>
-                </div>
+                <img src="images/logo.png" alt="UTH Solutions Logo" class="logo-img">
             </div>
             
             <nav>
                 <ul class="nav-menu">
-                    <li><a href="index.php">INICIO</a></li>
+                    <li><a href="#inicio">INICIO</a></li>
                     <li><a href="#quienes-somos">QUIENES SOMOS</a></li>
-                    <li><a href="propiedades.php?tipo=alquiler">ALQUILERES</a></li>
-                    <li><a href="propiedades.php?tipo=venta">VENTAS</a></li>
-                    <li><a href="#contacto">CONTÁCTENOS</a></li>
+                    <li><a href="#alquileres">ALQUILERES</a></li>
+                    <li><a href="#ventas">VENTAS</a></li>
+                    <li><a href="#contactenos">CONTÁCTENOS</a></li>
                 </ul>
             </nav>
             
@@ -132,7 +152,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
                 <div class="properties-grid">
                     <?php foreach ($resultados_busqueda as $propiedad): ?>
                         <div class="property-card">
-                            <div class="property-image" style="background-image: url('images/<?= $propiedad['imagen_destacada'] ? htmlspecialchars($propiedad['imagen_destacada']) : 'default-house.jpg' ?>');"></div>
+                            <div class="property-image" <?php if ($propiedad['imagen_destacada'] && file_exists('images/' . $propiedad['imagen_destacada'])): ?>style="background-image: url('images/<?= htmlspecialchars($propiedad['imagen_destacada']) ?>');"<?php endif; ?>></div>
                             <div class="property-content">
                                 <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
                                 <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
@@ -151,7 +171,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     <?php else: ?>
     
     <!-- Banner -->
-    <section class="banner">
+    <section class="banner" id="inicio">
         <div class="banner-content">
             <h2><?= $config ? htmlspecialchars($config['mensaje_banner']) : 'PERMÍTENOS AYUDARTE A CUMPLIR TUS SUEÑOS' ?></h2>
             <div class="banner-house">
@@ -169,7 +189,16 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
                     <p><?= $config ? nl2br(htmlspecialchars($config['descripcion_quienes_somos'])) : 'Curabitur congue eleifend orci, sit mollit tristram nec. Phasellus vestibulum nibh nisl. Donec eu viverdut nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi pretium erat et orci vehicula, id fringilla lorem tempus. Pellentesque ex libero, luctus quis mauris congue sed vitae rutrum tellus.' ?></p>
                 </div>
                 <div class="about-image">
-                    <img src="images/<?= $config && $config['imagen_quienes_somos'] ? htmlspecialchars($config['imagen_quienes_somos']) : 'team-member.jpg' ?>" alt="Equipo">
+                    <?php if ($config && $config['imagen_quienes_somos'] && file_exists('images/' . $config['imagen_quienes_somos'])): ?>
+                        <img src="images/<?= htmlspecialchars($config['imagen_quienes_somos']) ?>" alt="Equipo">
+                    <?php else: ?>
+                        <div style="background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%); color: white; padding: 40px; border-radius: 10px; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
+                            <i class="fas fa-users" style="font-size: 64px; margin-bottom: 20px; opacity: 0.8;"></i>
+                            <h3 style="margin-bottom: 10px; font-size: 24px;">Nuestro Equipo</h3>
+                            <p style="opacity: 0.9; margin: 0;">Profesionales dedicados a ayudarte</p>
+                            <small style="opacity: 0.7; margin-top: 15px;">Puedes subir una imagen desde el panel de administración</small>
+                        </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
@@ -182,7 +211,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
             <div class="properties-grid">
                 <?php foreach ($destacadas as $propiedad): ?>
                     <div class="property-card">
-                        <div class="property-image" style="background-image: url('images/<?= $propiedad['imagen_destacada'] ? htmlspecialchars($propiedad['imagen_destacada']) : 'default-house.jpg' ?>');"></div>
+                        <div class="property-image" <?php if ($propiedad['imagen_destacada'] && file_exists('images/' . $propiedad['imagen_destacada'])): ?>style="background-image: url('images/<?= htmlspecialchars($propiedad['imagen_destacada']) ?>');"<?php endif; ?>></div>
                         <div class="property-content">
                             <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
                             <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
@@ -199,13 +228,13 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     </section>
 
     <!-- Propiedades en Venta -->
-    <section class="properties-section ventas">
+    <section class="properties-section ventas" id="ventas">
         <div class="container">
             <h2 class="section-title">PROPIEDADES EN VENTA</h2>
             <div class="properties-grid">
                 <?php foreach ($ventas as $propiedad): ?>
                     <div class="property-card">
-                        <div class="property-image" style="background-image: url('images/<?= $propiedad['imagen_destacada'] ? htmlspecialchars($propiedad['imagen_destacada']) : 'default-house.jpg' ?>');"></div>
+                        <div class="property-image" <?php if ($propiedad['imagen_destacada'] && file_exists('images/' . $propiedad['imagen_destacada'])): ?>style="background-image: url('images/<?= htmlspecialchars($propiedad['imagen_destacada']) ?>');"<?php endif; ?>></div>
                         <div class="property-content">
                             <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
                             <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
@@ -222,13 +251,13 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     </section>
 
     <!-- Propiedades en Alquiler -->
-    <section class="properties-section alquiler">
+    <section class="properties-section alquiler" id="alquileres">
         <div class="container">
             <h2 class="section-title">PROPIEDADES EN ALQUILER</h2>
             <div class="properties-grid">
                 <?php foreach ($alquileres as $propiedad): ?>
                     <div class="property-card">
-                        <div class="property-image" style="background-image: url('images/<?= $propiedad['imagen_destacada'] ? htmlspecialchars($propiedad['imagen_destacada']) : 'default-house.jpg' ?>');"></div>
+                        <div class="property-image" <?php if ($propiedad['imagen_destacada'] && file_exists('images/' . $propiedad['imagen_destacada'])): ?>style="background-image: url('images/<?= htmlspecialchars($propiedad['imagen_destacada']) ?>');"<?php endif; ?>></div>
                         <div class="property-content">
                             <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
                             <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
@@ -247,7 +276,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     <?php endif; ?>
 
     <!-- Footer -->
-    <footer class="footer" id="contacto">
+    <footer class="footer" id="contactenos">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
@@ -260,8 +289,13 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
                 </div>
                 
                 <div class="footer-section">
-                    <h3>UTH SOLUTIONS</h3>
-                    <p>REAL STATE</p>
+                    <div class="footer-logo">
+                        <img src="images/logo.png" alt="UTH Solutions Logo" class="footer-logo-img">
+                        <div class="footer-logo-text">
+                            <h3>UTH SOLUTIONS</h3>
+                            <p>REAL STATE</p>
+                        </div>
+                    </div>
                     <div class="footer-social">
                         <a href="<?= $config['facebook_url'] ?? '#' ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a href="<?= $config['youtube_url'] ?? '#' ?>" target="_blank"><i class="fab fa-youtube"></i></a>

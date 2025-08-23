@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     line-height: 1.6;
@@ -32,6 +36,13 @@ body {
     color: #ffd700;
 }
 
+.logo-img {
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
+    object-fit: contain;
+}
+
 .logo-icon {
     width: 40px;
     height: 40px;
@@ -46,13 +57,13 @@ body {
 }
 
 .logo-text h1 {
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
 }
 
 .logo-text p {
-    font-size: 12px;
+    font-size: 10px;
     opacity: 0.9;
 }
 
@@ -317,6 +328,29 @@ body {
     background-size: cover;
     background-position: center;
     position: relative;
+    background-color: #e3f2fd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.property-image::before {
+    content: "\f015";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 48px;
+    color: #1976d2;
+    opacity: 0.3;
+    position: absolute;
+    z-index: 1;
+}
+
+.property-image[style*="url"] {
+    background-color: transparent;
+}
+
+.property-image[style*="url"]::before {
+    display: none;
 }
 
 .property-content {
@@ -471,6 +505,33 @@ body {
     border-top: 1px solid #333;
     color: #333;
     font-size: 14px;
+}
+
+/* Footer Logo Styles */
+.footer-logo {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.footer-logo-img {
+    width: 30px;
+    height: 30px;
+    margin-right: 12px;
+    object-fit: contain;
+}
+
+.footer-logo-text h3 {
+    color: #ffd700;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.footer-logo-text p {
+    color: #ffd700;
+    font-size: 12px;
+    margin: 0;
 }
 
 /* Responsive */

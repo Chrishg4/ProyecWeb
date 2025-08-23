@@ -311,7 +311,7 @@ try {
                     </div>
                     <h3>Mis Propiedades</h3>
                     <p>Gestiona todas tus propiedades, agrega nuevas, edita o elimina las existentes.</p>
-                    <a href="mis-propiedades.php" class="option-btn">Gestionar</a>
+                    <a href="propiedades.php" class="option-btn">Gestionar</a>
                 </div>
                 
                 <div class="option-card">
@@ -320,7 +320,7 @@ try {
                     </div>
                     <h3>Agregar Propiedad</h3>
                     <p>Agrega una nueva propiedad al sistema con toda la información necesaria.</p>
-                    <a href="agregar-propiedad.php" class="option-btn">Agregar</a>
+                    <a href="agregar_propiedad.php" class="option-btn">Agregar</a>
                 </div>
                 
                 <div class="option-card">
