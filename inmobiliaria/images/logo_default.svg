@@ -1,0 +1,8 @@
+<!-- Logo por defecto SVG para navbar -->
+<svg width="90" height="60" viewBox="0 0 90 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="90" height="60" rx="8" fill="#1a237e"/>
+  <rect x="8" y="8" width="74" height="44" rx="4" fill="white"/>
+  <text x="45" y="25" text-anchor="middle" fill="#1a237e" font-family="Arial, sans-serif" font-size="10" font-weight="bold">UTH</text>
+  <text x="45" y="38" text-anchor="middle" fill="#1a237e" font-family="Arial, sans-serif" font-size="8">SOLUTIONS</text>
+  <text x="45" y="48" text-anchor="middle" fill="#1a237e" font-family="Arial, sans-serif" font-size="6">REAL STATE</text>
+</svg>
