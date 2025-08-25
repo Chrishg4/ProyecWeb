@@ -440,7 +440,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
                     <div style="flex: 1.2; display: flex; justify-content: flex-end;">
                         <div style="background: #e5d6d6; color: #1a237e; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); padding: 22px 28px 18px 28px; min-width: 320px; max-width: 350px;">
                             <div style="font-size: 1.2rem; font-weight: bold; text-align: center; color: #1a237e; margin-bottom: 12px;">Contactanos</div>
-                            <form method="post" action="#contacto">
+                            <form method="post" action="contacto_footer.php">
                                 <div style="display: flex; flex-direction: column; gap: 8px;">
                                     <label style="font-weight: bold; color: #1a237e;">Nombre:</label>
                                     <input type="text" name="nombre" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
