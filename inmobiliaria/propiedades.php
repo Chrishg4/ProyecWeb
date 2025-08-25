@@ -286,7 +286,7 @@ try {
                                 $logo_navbar = 'uploads/logos/' . $config['logo_navbar'];
                         }
                     ?>
-                    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img" style="height: 48px; width: auto; margin-right: 18px;">
+                    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img">
                 </div>
                 <nav style="flex: 1;">
                     <ul class="nav-menu" style="display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; justify-content: center; align-items: center;">
@@ -403,11 +403,15 @@ try {
                 </div>
                 <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px;">
                     <div style="margin-bottom: 10px;">
-                        <img src="images/default_logo.png" alt="Logo" style="height: 54px; margin-bottom: 8px;">
-                    </div>
-                    <div style="font-weight: bold; text-align: center; color: #fff; font-size: 1.1rem; letter-spacing: 1px; text-shadow: 0 1px 2px #000; margin-bottom: 10px;">
-                        UTN SOLUTIONS<br>REAL STATE
-                    </div>
+                        <div style="margin-bottom: 10px;">
+                            <?php
+                                $logo_footer = 'images/logo.png';
+                                if (file_exists('uploads/logos/logo_footer_1756111853.png')) {
+                                    $logo_footer = 'uploads/logos/logo_footer_1756111853.png';
+                                }
+                            ?>
+                            <img src="<?= $logo_footer ?>" alt="Logo" class="logo-img">
+                        </div>
                     <div style="display: flex; gap: 18px; justify-content: center; align-items: center; margin-top: 8px;">
                         <a href="#" style="background: #3b5998; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" style="background: #e53935; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-youtube"></i></a>

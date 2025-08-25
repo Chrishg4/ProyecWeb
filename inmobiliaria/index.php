@@ -232,7 +232,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
                                 $logo_navbar = 'uploads/logos/' . $config['logo_navbar'];
                         }
                     ?>
-                    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img" style="height: 48px; width: auto; margin-right: 18px;">
+                    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img">
                 </div>
                 <nav style="flex: 1;">
                     <ul class="nav-menu" style="display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; justify-content: center; align-items: center;">
@@ -260,9 +260,8 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
                         <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="login.php" class="login-icon" style="color: #ffd700; font-size: 1.2rem; position: relative;">
-                            <i class="fas fa-user"></i>
-                            <span class="notification-badge" style="position: absolute; top: -7px; right: -10px; background: #e53935; color: #fff; border-radius: 50%; font-size: 0.7rem; padding: 2px 5px; min-width: 18px; text-align: center;">4</span>
+                        <a href="login.php" class="login-icon" style="display: flex; align-items: center;">
+                            <img src="images/perfilLogo.png" alt="Perfil" style="width: 110px; height: 110px;  padding: 2px;">
                         </a>
                     </div>
                 </div>
@@ -426,10 +425,13 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
                     </div>
                     <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px;">
                         <div style="margin-bottom: 10px;">
-                            <img src="images/default_logo.png" alt="Logo" style="height: 54px; margin-bottom: 8px;">
-                        </div>
-                        <div style="font-weight: bold; text-align: center; color: #fff; font-size: 1.1rem; letter-spacing: 1px; text-shadow: 0 1px 2px #000; margin-bottom: 10px;">
-                            UTN SOLUTIONS<br>REAL STATE
+                            <?php
+                                $logo_footer = 'images/logo.png';
+                                if (file_exists('uploads/logos/logo_footer_1756111853.png')) {
+                                    $logo_footer = 'uploads/logos/logo_footer_1756111853.png';
+                                }
+                            ?>
+                            <img src="<?= $logo_footer ?>" alt="Logo" class="logo-img">
                         </div>
                         <div style="display: flex; gap: 18px; justify-content: center; align-items: center; margin-top: 8px;">
                             <a href="#" style="background: #3b5998; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-facebook-f"></i></a>
