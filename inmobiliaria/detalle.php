@@ -460,57 +460,52 @@ try {
     </style>
 </head>
 <body class="<?= $config ? 'color-' . $config['color_esquema'] : 'color-azul' ?>">
-    <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <div class="logo-icon">
-                    <i class="fas fa-home"></i>
+        <!-- Header -->
+        <header class="header" style="background: #02050e; width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <div class="header-container" style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 70px;">
+                <div class="logo" style="display: flex; align-items: center; height: 60px;">
+                    <?php 
+                        $logo_navbar = 'images/logo.png'; // por defecto
+                        if ($config && $config['logo_navbar'] && file_exists('uploads/logos/' . $config['logo_navbar'])) {
+                                $logo_navbar = 'uploads/logos/' . $config['logo_navbar'];
+                        }
+                    ?>
+                    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img" style="height: 48px; width: auto; margin-right: 18px;">
                 </div>
-                <div class="logo-text">
-                    <h1><?= $config ? htmlspecialchars($config['nombre_sitio']) : 'UTH SOLUTIONS' ?></h1>
-                    <p>REAL STATE</p>
-                </div>
-            </div>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.php">INICIO</a></li>
-                    <li><a href="index.php#quienes-somos">QUIENES SOMOS</a></li>
-                    <li><a href="propiedades.php?tipo=alquiler">ALQUILERES</a></li>
-                    <li><a href="propiedades.php?tipo=venta">VENTAS</a></li>
-                    <li><a href="index.php#contacto">CONTÁCTENOS</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-right">
-                <div class="search-container">
-                    <form method="GET" action="index.php" style="display: flex;">
-                        <input type="text" name="buscar" class="search-input" placeholder="Buscar propiedades...">
-                        <button type="submit" class="search-btn">
+                <nav style="flex: 1;">
+                    <ul class="nav-menu" style="display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; justify-content: center; align-items: center;">
+                        <li><a href="index.php" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">INICIO</a></li>
+                        <li><a href="index.php#quienes-somos" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">QUIENES SOMOS</a></li>
+                        <li><a href="propiedades.php?tipo=alquiler" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">ALQUILERES</a></li>
+                        <li><a href="propiedades.php?tipo=venta" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">VENTAS</a></li>
+                        <li><a href="index.php#contacto" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">CONTÁCTENOS</a></li>
+                    </ul>
+                </nav>
+                <div class="header-right" style="display: flex; align-items: center; gap: 18px;">
+                    <form method="GET" action="index.php" style="display: flex; align-items: center; background: #181b23; border-radius: 20px; padding: 2px 10px;">
+                        <input type="text" name="buscar" class="search-input" placeholder="Buscar propiedades..." style="background: transparent; border: none; color: #fff; outline: none; padding: 6px 8px; font-size: 1rem; width: 120px;">
+                        <button type="submit" class="search-btn" style="background: none; border: none; color: #ffd700; font-size: 1.1rem; cursor: pointer; padding: 0 4px;">
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
-                </div>
-                
-                <div class="social-icons">
-                    <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="login.php" class="login-icon">
-                        <i class="fas fa-user"></i>
-                        <span class="notification-badge">4</span>
-                    </a>
+                    <div class="social-icons" style="display: flex; align-items: center; gap: 12px;">
+                        <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="login.php" class="login-icon" style="color: #ffd700; font-size: 1.2rem; position: relative;">
+                            <i class="fas fa-user"></i>
+                            <span class="notification-badge" style="position: absolute; top: -7px; right: -10px; background: #e53935; color: #fff; border-radius: 50%; font-size: 0.7rem; padding: 2px 5px; min-width: 18px; text-align: center;">4</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
     <!-- Property Header -->
     <section class="property-header">
@@ -677,69 +672,54 @@ try {
     </div>
 
     <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Dirección</h3>
-                    <p><?= $config ? htmlspecialchars($config['direccion']) : 'Calles Guanacaste, 100 mts Este' ?></p>
-                    <h3 style="margin-top: 20px;">Teléfono</h3>
-                    <p><?= $config ? htmlspecialchars($config['telefono_contacto']) : '8800-2030' ?></p>
-                    <h3 style="margin-top: 20px;">Email</h3>
-                    <p><?= $config ? htmlspecialchars($config['email_contacto']) : 'info@uthrealestate.com' ?></p>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>UTH SOLUTIONS</h3>
-                    <p>REAL STATE</p>
-                    <div class="footer-social">
-                        <a href="<?= $config['facebook_url'] ?? '#' ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="<?= $config['youtube_url'] ?? '#' ?>" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="<?= $config['instagram_url'] ?? '#' ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+    <footer class="footer" style="background: #ffd731; color: #02050e; padding: 0; margin-top: 0;">
+        <div style="background: #1a237e; width: 100vw; height: 24px; margin-left: 50%; transform: translateX(-50%); border-radius: 0 0 12px 12px;"></div>
+        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0;">
+            <div class="footer-content" style="display: flex; align-items: flex-start; justify-content: space-between; padding: 32px 0 0 0; gap: 32px;">
+                <div style="flex: 1.2; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px;">
+                    <div style="font-size: 1.1rem; color: #181b23; margin-bottom: 10px;">
+                        <span style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;"><i class="fas fa-map-marker-alt" style="font-size: 1.3em;"></i> <span><b>Dirección;</b> Cañas Guanacaste, 100 mts Este<br>Parque de Cañas</span></span>
+                        <span style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;"><i class="fas fa-phone-alt" style="font-size: 1.2em;"></i> <span><b>Teléfono:</b> 8890-2030</span></span>
+                        <span style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-envelope" style="font-size: 1.2em;"></i> <span><b>Email:</b> info@utnrealstate.com</span></span>
                     </div>
                 </div>
-                
-                <div class="footer-section">
-                    <h3>Contáctenos</h3>
-                    <form class="contact-form" action="contacto.php" method="POST">
-                        <input type="text" name="nombre" placeholder="Nombre:" required>
-                        <input type="email" name="email" placeholder="Email:" required>
-                        <input type="tel" name="telefono" placeholder="Teléfono:" required>
-                        <textarea name="mensaje" placeholder="Mensaje:" rows="4" required></textarea>
-                        <button type="submit">Enviar</button>
-                    </form>
+                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px;">
+                    <div style="margin-bottom: 10px;">
+                        <img src="images/default_logo.png" alt="Logo" style="height: 54px; margin-bottom: 8px;">
+                    </div>
+                    <div style="font-weight: bold; text-align: center; color: #fff; font-size: 1.1rem; letter-spacing: 1px; text-shadow: 0 1px 2px #000; margin-bottom: 10px;">
+                        UTN SOLUTIONS<br>REAL STATE
+                    </div>
+                    <div style="display: flex; gap: 18px; justify-content: center; align-items: center; margin-top: 8px;">
+                        <a href="#" style="background: #3b5998; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" style="background: #e53935; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-youtube"></i></a>
+                        <a href="#" style="background: #8a3ab9; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div style="flex: 1.2; display: flex; justify-content: flex-end;">
+                    <div style="background: #e5d6d6; color: #1a237e; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); padding: 22px 28px 18px 28px; min-width: 320px; max-width: 350px;">
+                        <div style="font-size: 1.2rem; font-weight: bold; text-align: center; color: #1a237e; margin-bottom: 12px;">Contactanos</div>
+                        <form method="post" action="#contacto">
+                            <div style="display: flex; flex-direction: column; gap: 8px;">
+                                <label style="font-weight: bold; color: #1a237e;">Nombre:</label>
+                                <input type="text" name="nombre" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                                <label style="font-weight: bold; color: #1a237e;">Email:</label>
+                                <input type="email" name="email" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                                <label style="font-weight: bold; color: #1a237e;">Teléfono:</label>
+                                <input type="tel" name="telefono" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                                <label style="font-weight: bold; color: #1a237e;">Mensaje:</label>
+                                <textarea name="mensaje" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
+                            </div>
+                            <button type="submit" style="background: #1a237e; color: #ffd700; border: none; border-radius: 4px; padding: 8px 0; font-weight: bold; width: 100%; margin-top: 12px; font-size: 1rem;">Envaír</button>
+                        </form>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>Derechos Reservados 2024</p>
-            </div>
+        </div>
+        <div style="background: #1a237e; color: #fff; text-align: center; padding: 10px 0; width: 100vw; margin-left: 50%; transform: translateX(-50%); border-radius: 0; font-size: 1rem; letter-spacing: 1px;">
+            Derechos Reservados 2024
         </div>
     </footer>
-
-    <script>
-        // Gallery functionality
-        document.querySelectorAll('.thumbnail').forEach(thumb => {
-            thumb.addEventListener('click', function() {
-                const imageUrl = this.dataset.image;
-                document.getElementById('mainImage').style.backgroundImage = `url('${imageUrl}')`;
-                
-                // Update active state
-                document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
                 }
             });
         });

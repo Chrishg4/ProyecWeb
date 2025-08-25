@@ -223,56 +223,51 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     <?php endif; ?>
     
     <!-- Header -->
-    <header class="header">
-        <div class="header-container">
-            <div class="logo">
-                <?php 
-                $logo_navbar = 'images/logo.png'; // por defecto
-                if ($config && $config['logo_navbar'] && file_exists('uploads/logos/' . $config['logo_navbar'])) {
-                    $logo_navbar = 'uploads/logos/' . $config['logo_navbar'];
-                }
-                ?>
-                <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img">
-            </div>
-            
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#inicio">INICIO</a></li>
-                    <li><a href="#quienes-somos">QUIENES SOMOS</a></li>
-                    <li><a href="#alquileres">ALQUILERES</a></li>
-                    <li><a href="#ventas">VENTAS</a></li>
-                    <li><a href="#contactenos">CONTÁCTENOS</a></li>
-                </ul>
-            </nav>
-            
-            <div class="header-right">
-                <div class="search-container">
-                    <form method="GET" action="index.php" style="display: flex;">
-                        <input type="text" name="buscar" class="search-input" placeholder="Buscar propiedades..." value="<?= htmlspecialchars($busqueda) ?>">
-                        <button type="submit" class="search-btn">
+        <header class="header" style="background: #02050e; width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+            <div class="header-container" style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 70px;">
+                <div class="logo" style="display: flex; align-items: center; height: 60px;">
+                    <?php 
+                        $logo_navbar = 'images/logo.png'; // por defecto
+                        if ($config && $config['logo_navbar'] && file_exists('uploads/logos/' . $config['logo_navbar'])) {
+                                $logo_navbar = 'uploads/logos/' . $config['logo_navbar'];
+                        }
+                    ?>
+                    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img" style="height: 48px; width: auto; margin-right: 18px;">
+                </div>
+                <nav style="flex: 1;">
+                    <ul class="nav-menu" style="display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; justify-content: center; align-items: center;">
+                        <li><a href="#inicio" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">INICIO</a></li>
+                        <li><a href="#quienes-somos" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">QUIENES SOMOS</a></li>
+                        <li><a href="#alquileres" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">ALQUILERES</a></li>
+                        <li><a href="#ventas" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">VENTAS</a></li>
+                        <li><a href="#contactenos" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">CONTÁCTENOS</a></li>
+                    </ul>
+                </nav>
+                <div class="header-right" style="display: flex; align-items: center; gap: 18px;">
+                    <form method="GET" action="index.php" style="display: flex; align-items: center; background: #181b23; border-radius: 20px; padding: 2px 10px;">
+                        <input type="text" name="buscar" class="search-input" placeholder="Buscar propiedades..." value="<?= htmlspecialchars($busqueda) ?>" style="background: transparent; border: none; color: #fff; outline: none; padding: 6px 8px; font-size: 1rem; width: 120px;">
+                        <button type="submit" class="search-btn" style="background: none; border: none; color: #ffd700; font-size: 1.1rem; cursor: pointer; padding: 0 4px;">
                             <i class="fas fa-search"></i>
                         </button>
                     </form>
-                </div>
-                
-                <div class="social-icons">
-                    <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                    <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="login.php" class="login-icon">
-                        <i class="fas fa-user"></i>
-                        <span class="notification-badge">4</span>
-                    </a>
+                    <div class="social-icons" style="display: flex; align-items: center; gap: 12px;">
+                        <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="login.php" class="login-icon" style="color: #ffd700; font-size: 1.2rem; position: relative;">
+                            <i class="fas fa-user"></i>
+                            <span class="notification-badge" style="position: absolute; top: -7px; right: -10px; background: #e53935; color: #fff; border-radius: 50%; font-size: 0.7rem; padding: 2px 5px; min-width: 18px; text-align: center;">4</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-    </header>
+        </header>
 
     <?php if (!empty($busqueda)): ?>
     <!-- Resultados de búsqueda -->
@@ -318,20 +313,18 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     <!-- About Section -->
     <section class="about" id="quienes-somos">
         <div class="container">
-            <div class="about-content">
-                <div class="about-text">
+            <div class="about-content" style="display: flex; align-items: center; justify-content: space-between;">
+                <div class="about-text" style="flex: 1;">
                     <h2><?= ($config && $config['titulo_quienes_somos']) ? htmlspecialchars($config['titulo_quienes_somos']) : 'QUIENES SOMOS' ?></h2>
                     <p><?= ($config && $config['descripcion_quienes_somos']) ? nl2br(htmlspecialchars($config['descripcion_quienes_somos'])) : 'Curabitur congue eleifend orci, sit mollit tristram nec. Phasellus vestibulum nibh nisl. Donec eu viverdut nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi pretium erat et orci vehicula, id fringilla lorem tempus. Pellentesque ex libero, luctus quis mauris congue sed vitae rutrum tellus.' ?></p>
                 </div>
-                <div class="about-image">
+                <div class="about-image" style="flex: 1; display: flex; justify-content: flex-end;">
                     <?php if ($config && isset($config['imagen_quienes_somos']) && $config['imagen_quienes_somos'] && file_exists('images/' . $config['imagen_quienes_somos'])): ?>
-                        <img src="images/<?= htmlspecialchars($config['imagen_quienes_somos']) ?>" alt="Equipo">
+                        <img src="images/<?= htmlspecialchars($config['imagen_quienes_somos']) ?>" alt="Equipo" style="width: 320px; height: 220px; object-fit: cover; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.15);">
                     <?php else: ?>
-                        <div style="background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%); color: white; padding: 40px; border-radius: 10px; text-align: center; min-height: 300px; display: flex; flex-direction: column; justify-content: center;">
-                            <i class="fas fa-users" style="font-size: 64px; margin-bottom: 20px; opacity: 0.8;"></i>
-                            <h3 style="margin-bottom: 10px; font-size: 24px;">Nuestro Equipo</h3>
-                            <p style="opacity: 0.9; margin: 0;">Profesionales dedicados a ayudarte</p>
-                            <small style="opacity: 0.7; margin-top: 15px;">Puedes subir una imagen desde el panel de administración</small>
+                        <div style="background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%); color: white; padding: 40px; border-radius: 16px; text-align: center; min-width: 320px; min-height: 220px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.15);">
+                            <i class="fas fa-users fa-3x"></i>
+                            <span style="margin-top: 20px;">Imagen de equipo</span>
                         </div>
                     <?php endif; ?>
                 </div>
@@ -420,52 +413,54 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     <?php endif; ?>
 
     <!-- Footer -->
-    <footer class="footer" id="contactenos">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Dirección</h3>
-                    <p><?= $config ? htmlspecialchars($config['direccion']) : 'Calles Guanacaste, 100 mts Este' ?></p>
-                    <h3 style="margin-top: 20px;">Teléfono</h3>
-                    <p><?= $config ? htmlspecialchars($config['telefono_contacto']) : '8800-2030' ?></p>
-                    <h3 style="margin-top: 20px;">Email</h3>
-                    <p><?= $config ? htmlspecialchars($config['email_contacto']) : 'info@uthrealestate.com' ?></p>
-                </div>
-                
-                <div class="footer-section">
-                    <div class="footer-logo">
-                        <?php 
-                        $logo_footer = 'images/logo.png'; // por defecto
-                        if ($config && $config['logo_footer'] && file_exists('uploads/logos/' . $config['logo_footer'])) {
-                            $logo_footer = 'uploads/logos/' . $config['logo_footer'];
-                        }
-                        ?>
-                        <img src="<?= $logo_footer ?>" alt="UTH Solutions Logo" class="footer-logo-img" style="width: 90px; height: 90px;">
+        <footer class="footer" style="background: #ffd731; color: #02050e; padding: 0; margin-top: 0;">
+            <div style="background: #1a237e; width: 100vw; height: 24px; margin-left: 50%; transform: translateX(-50%); border-radius: 0 0 12px 12px;"></div>
+            <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0;">
+                <div class="footer-content" style="display: flex; align-items: flex-start; justify-content: space-between; padding: 32px 0 0 0; gap: 32px;">
+                    <div style="flex: 1.2; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px;">
+                        <div style="font-size: 1.1rem; color: #181b23; margin-bottom: 10px;">
+                            <span style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;"><i class="fas fa-map-marker-alt" style="font-size: 1.3em;"></i> <span><b>Dirección;</b> Cañas Guanacaste, 100 mts Este<br>Parque de Cañas</span></span>
+                            <span style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;"><i class="fas fa-phone-alt" style="font-size: 1.2em;"></i> <span><b>Teléfono:</b> 8890-2030</span></span>
+                            <span style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-envelope" style="font-size: 1.2em;"></i> <span><b>Email:</b> info@utnrealstate.com</span></span>
+                        </div>
                     </div>
-                    <div class="footer-social">
-                        <a href="<?= $config['facebook_url'] ?? '#' ?>" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="<?= $config['youtube_url'] ?? '#' ?>" target="_blank"><i class="fab fa-youtube"></i></a>
-                        <a href="<?= $config['instagram_url'] ?? '#' ?>" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px;">
+                        <div style="margin-bottom: 10px;">
+                            <img src="images/default_logo.png" alt="Logo" style="height: 54px; margin-bottom: 8px;">
+                        </div>
+                        <div style="font-weight: bold; text-align: center; color: #fff; font-size: 1.1rem; letter-spacing: 1px; text-shadow: 0 1px 2px #000; margin-bottom: 10px;">
+                            UTN SOLUTIONS<br>REAL STATE
+                        </div>
+                        <div style="display: flex; gap: 18px; justify-content: center; align-items: center; margin-top: 8px;">
+                            <a href="#" style="background: #3b5998; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" style="background: #e53935; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-youtube"></i></a>
+                            <a href="#" style="background: #8a3ab9; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-instagram"></i></a>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="footer-section">
-                    <h3>Contáctenos</h3>
-                    <form class="contact-form" action="contacto.php" method="POST">
-                        <input type="text" name="nombre" placeholder="Nombre:" required>
-                        <input type="email" name="email" placeholder="Email:" required>
-                        <input type="tel" name="telefono" placeholder="Teléfono:" required>
-                        <textarea name="mensaje" placeholder="Mensaje:" rows="4" required></textarea>
-                        <button type="submit">Enviar</button>
-                    </form>
+                    <div style="flex: 1.2; display: flex; justify-content: flex-end;">
+                        <div style="background: #e5d6d6; color: #1a237e; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); padding: 22px 28px 18px 28px; min-width: 320px; max-width: 350px;">
+                            <div style="font-size: 1.2rem; font-weight: bold; text-align: center; color: #1a237e; margin-bottom: 12px;">Contactanos</div>
+                            <form method="post" action="#contacto">
+                                <div style="display: flex; flex-direction: column; gap: 8px;">
+                                    <label style="font-weight: bold; color: #1a237e;">Nombre:</label>
+                                    <input type="text" name="nombre" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                                    <label style="font-weight: bold; color: #1a237e;">Email:</label>
+                                    <input type="email" name="email" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                                    <label style="font-weight: bold; color: #1a237e;">Teléfono:</label>
+                                    <input type="tel" name="telefono" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
+                                    <label style="font-weight: bold; color: #1a237e;">Mensaje:</label>
+                                    <textarea name="mensaje" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
+                                </div>
+                                <button type="submit" style="background: #1a237e; color: #ffd700; border: none; border-radius: 4px; padding: 8px 0; font-weight: bold; width: 100%; margin-top: 12px; font-size: 1rem;">Envaír</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>Derechos Reservados 2024</p>
+            <div style="background: #1a237e; color: #fff; text-align: center; padding: 10px 0; width: 100vw; margin-left: 50%; transform: translateX(-50%); border-radius: 0; font-size: 1rem; letter-spacing: 1px;">
+                Derechos Reservados 2024
             </div>
-        </div>
-    </footer>
+        </footer>
 
     <script>
         // Smooth scrolling para enlaces internos
