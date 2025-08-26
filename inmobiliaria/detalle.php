@@ -47,7 +47,19 @@ try {
     $imagenes_adicionales = [];
 }
 
-
+// Obtener propiedades similares
+try {
+    $stmt = $conexion->prepare("
+        SELECT * FROM propiedades 
+        WHERE tipo = ? AND id != ? AND estado = 'activa' 
+        ORDER BY fecha_creacion DESC 
+        LIMIT 3
+    ");
+    $stmt->execute([$propiedad['tipo'], $id]);
+    $propiedades_similares = $stmt->fetchAll();
+} catch(PDOException $e) {
+    $propiedades_similares = [];
+}
 
 $busqueda = isset($_GET['buscar']) ? $_GET['buscar'] : '';
 ?>
@@ -255,7 +267,31 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                 <i class="fas fa-arrow-left"></i> Volver a <?= ucfirst($propiedad['tipo']) ?>
             </a>
         </div>
-    <!-- Se eliminó la sección de propiedades similares -->
+        <!-- Similar Properties -->
+        <?php if (!empty($propiedades_similares)): ?>
+        <div class="similar-properties">
+            <h2 class="section-title">Propiedades Similares</h2>
+            <div class="properties-grid">
+                <?php foreach ($propiedades_similares as $similar): ?>
+                <div class="property-card">
+                    <div class="card-image" style="background-image: url('images/<?= $similar['imagen_destacada'] ? htmlspecialchars($similar['imagen_destacada']) : 'default-house.jpg' ?>');"></div>
+                    <div class="card-content">
+                        <h3 class="card-title"><?= htmlspecialchars($similar['titulo']) ?></h3>
+                        <div class="card-price">$<?= number_format($similar['precio'], 0, '.', ',') ?></div>
+                        <div class="card-location">
+                            <i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($similar['ubicacion']) ?>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <a href="detalle.php?id=<?= $similar['id'] ?>" class="btn-contact btn-primary" style="width: 100%; text-align: center;">
+                                Ver Detalles
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
     </div>
 
    <!-- Footer -->

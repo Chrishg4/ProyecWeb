@@ -346,7 +346,7 @@ $usuario_actual = obtenerUsuarioActual();
                     </div>
                     <h3>Ver Sitio Web</h3>
                     <p>Visita el sitio web público para ver cómo se ve para los visitantes.</p>
-                    <a href="../index.php" class="option-btn">Ver Sitio</a>
+                    <a href="../index.php" class="option-btn" target="_blank">Ver Sitio</a>
                 </div>
             </div>
         </div>

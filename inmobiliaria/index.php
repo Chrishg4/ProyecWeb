@@ -197,13 +197,13 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
        <div class="navbar-left">
     <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="navbar-logo-img">
     <div class="social-icons" style="display: flex; align-items: center; gap: 12px;">
-        <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank" style="color: #fff; font-size: 1.2rem;">
+        <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
             <i class="fab fa-facebook-f"></i>
         </a>
-        <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank" style="color: #fff; font-size: 1.2rem;">
+        <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
             <i class="fab fa-youtube"></i>
         </a>
-        <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank" style="color: #fff; font-size: 1.2rem;">
+        <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
             <i class="fab fa-instagram"></i>
         </a>
     </div>
@@ -310,8 +310,8 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                     <div class="property-card" onclick="window.location.href='detalle.php?id=<?= $propiedad['id'] ?>'" style="cursor: pointer;">
                         <div class="property-image" <?php if ($propiedad['imagen_destacada'] && file_exists('images/' . $propiedad['imagen_destacada'])): ?>style="background-image: url('images/<?= htmlspecialchars($propiedad['imagen_destacada']) ?>');"<?php endif; ?>></div>
                         <div class="property-content">
-                            <h3 class="property-title" style="color: #fff;"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
-                            <p class="property-description" style="color: #fff;"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
+                            <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
+                            <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
                             <div class="property-price" style="text-align: center; color: #ffd700;">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
 
                         
@@ -334,8 +334,8 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                     <div class="property-card" onclick="window.location.href='detalle.php?id=<?= $propiedad['id'] ?>'" style="cursor: pointer;">
                         <div class="property-image" <?php if ($propiedad['imagen_destacada'] && file_exists('images/' . $propiedad['imagen_destacada'])): ?>style="background-image: url('images/<?= htmlspecialchars($propiedad['imagen_destacada']) ?>');"<?php endif; ?>></div>
                         <div class="property-content">
-                            <h3 class="property-title" style="color: #0e2341;"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
-                            <p class="property-description" style="color: #666;"> <?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
+                            <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
+                            <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
                             <div class="property-price" style="text-align: center; color: #1a237e;">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
 
                         </div>
@@ -357,8 +357,8 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                     <div class="property-card" onclick="window.location.href='detalle.php?id=<?= $propiedad['id'] ?>'" style="cursor: pointer;">
                         <div class="property-image" <?php if ($propiedad['imagen_destacada'] && file_exists('images/' . $propiedad['imagen_destacada'])): ?>style="background-image: url('images/<?= htmlspecialchars($propiedad['imagen_destacada']) ?>');"<?php endif; ?>></div>
                         <div class="property-content">
-                            <h3 class="property-title" style="color: #fff;"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
-                            <p class="property-description" style="color: #f8e5e5ff;"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
+                            <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
+                            <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
                             <div class="property-price" style="text-align: center; color: #ffd700;">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
                         </div>
                     </div>
