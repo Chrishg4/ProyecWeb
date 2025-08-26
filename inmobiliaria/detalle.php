@@ -71,7 +71,7 @@ try {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .header-navbar-realstate {
+    .header-navbar-realstate {
     background: #0a0d15;
     width: 100%;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -237,6 +237,7 @@ try {
     .navbar-right-block { align-items: flex-end; }
     .navbar-menu-realstate ul { gap: 10px; }
 }
+
 
         
         .property-title-section h1 {
@@ -659,7 +660,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
         </ul>
     </nav>
     <form method="GET" action="index.php" class="navbar-search">
-        <input type="text" name="buscar" placeholder="Buscar..." value="<?= htmlspecialchars($busqueda) ?>">
+        <input type="text" name="buscar" placeholder="Buscar..." value="<?= htmlspecialchars($busqueda) ?>
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
 </div>
