@@ -310,10 +310,10 @@ body {
 }
 
 .property-card {
-    background: white;
-    border-radius: 15px;
+    background: transparent !important;
+   
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    
     transition: transform 0.3s, box-shadow 0.3s;
     color: #333;
 }
@@ -355,17 +355,19 @@ body {
 
 .property-content {
     padding: 25px;
+    background: transparent !important;
+    box-shadow: none !important;
 }
 
 .property-title {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
-    color: var(--color-primario);
+    color: #1a237e;
 }
 
 .property-description {
-    color: #666;
+    color: hsl(0, 8%, 84%);
     margin-bottom: 20px;
     line-height: 1.6;
 }
