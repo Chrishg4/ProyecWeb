@@ -16,10 +16,11 @@ try {
     $config = null;
 }
 
-// Procesar formulario
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nombre_sitio = sanitizar($_POST['nombre_sitio'] ?? 'UTH SOLUTIONS REAL STATE');
     $color_esquema = $_POST['color_esquema'] ?? 'azul';
+    $color_primario = $_POST['color_primario'] ?? ($config['color_primario'] ?? '#1a237e');
+    $color_secundario = $_POST['color_secundario'] ?? ($config['color_secundario'] ?? '#FFC107');
     $mensaje_banner = sanitizar($_POST['mensaje_banner'] ?? 'PERMÍTENOS AYUDARTE A CUMPLIR TUS SUEÑOS');
     $titulo_quienes_somos = sanitizar($_POST['titulo_quienes_somos'] ?? 'Quienes Somos');
     $descripcion_quienes_somos = sanitizar($_POST['descripcion_quienes_somos'] ?? '');
@@ -32,7 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     
     // Verificar si se solicitó resetear esquema de colores
     if (isset($_POST['reset_colores'])) {
-        $color_esquema = 'azul'; // Color por defecto
+    $color_esquema = 'azul'; // Color por defecto
+    $color_primario = '#1a237e';
+    $color_secundario = '#FFD700';
     }
     
     // Obtener configuración actual para mantener valores existentes
@@ -44,6 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $logo_footer = $config_actual ? $config_actual['logo_footer'] : null;
     $banner_imagen = $config_actual ? $config_actual['banner_imagen'] : null;
     $imagen_quienes_somos = $config_actual ? $config_actual['imagen_quienes_somos'] : null;
+    // NO sobrescribir los colores recibidos por POST
     
     // Manejar subida de logo navbar
     if (isset($_FILES['logo_navbar']) && $_FILES['logo_navbar']['error'] == 0) {
@@ -153,7 +157,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Actualizar
                 $stmt = $conexion->prepare("
                     UPDATE configuracion_sitio SET 
-                    nombre_sitio = ?, color_esquema = ?, mensaje_banner = ?,
+                    nombre_sitio = ?, color_esquema = ?, color_primario = ?, color_secundario = ?, mensaje_banner = ?,
                     titulo_quienes_somos = ?, descripcion_quienes_somos = ?,
                     facebook_url = ?, youtube_url = ?, instagram_url = ?,
                     direccion = ?, telefono_contacto = ?, email_contacto = ?,
@@ -161,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     WHERE id = 1
                 ");
                 $stmt->execute([
-                    $nombre_sitio, $color_esquema, $mensaje_banner,
+                    $nombre_sitio, $color_esquema, $color_primario, $color_secundario, $mensaje_banner,
                     $titulo_quienes_somos, $descripcion_quienes_somos,
                     $facebook_url, $youtube_url, $instagram_url,
                     $direccion, $telefono_contacto, $email_contacto,
@@ -171,13 +175,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 // Insertar
                 $stmt = $conexion->prepare("
                     INSERT INTO configuracion_sitio 
-                    (nombre_sitio, color_esquema, mensaje_banner, titulo_quienes_somos, 
+                    (nombre_sitio, color_esquema, color_primario, color_secundario, mensaje_banner, titulo_quienes_somos, 
                      descripcion_quienes_somos, facebook_url, youtube_url, instagram_url,
                      direccion, telefono_contacto, email_contacto, logo_navbar, logo_footer, banner_imagen, imagen_quienes_somos) 
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
                 ");
                 $stmt->execute([
-                    $nombre_sitio, $color_esquema, $mensaje_banner,
+                    $nombre_sitio, $color_esquema, $color_primario, $color_secundario, $mensaje_banner,
                     $titulo_quienes_somos, $descripcion_quienes_somos,
                     $facebook_url, $youtube_url, $instagram_url,
                     $direccion, $telefono_contacto, $email_contacto,
@@ -593,43 +597,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                         </div>
                     </div>
                     
-                    <!-- Esquema de Colores -->
+                    <!-- Colores Personalizados -->
                     <div class="form-section">
                         <div class="color-section-header">
                             <h3>
                                 <i class="fas fa-palette"></i>
-                                Esquema de Colores
+                                Colores Personalizados
                             </h3>
                             <button type="submit" name="reset_colores" class="reset-btn" 
-                                    onclick="return confirm('¿Está seguro de que desea resetear el esquema de colores al predeterminado (azul)?')">
-                                <i class="fas fa-undo"></i> Resetear a Azul
+                                    onclick="return confirm('¿Está seguro de que desea resetear los colores predeterminados?')">
+                                <i class="fas fa-undo"></i> Resetear colores
                             </button>
                         </div>
-                        
-                        <div class="color-preview">
-                            <label class="color-option color-azul <?= (!$config || $config['color_esquema'] == 'azul') ? 'selected' : '' ?>">
-                                <input type="radio" name="color_esquema" value="azul" 
-                                       <?= (!$config || $config['color_esquema'] == 'azul') ? 'checked' : '' ?>>
-                                Azul
-                            </label>
-                            
-                            <label class="color-option color-amarillo <?= ($config && $config['color_esquema'] == 'amarillo') ? 'selected' : '' ?>">
-                                <input type="radio" name="color_esquema" value="amarillo" 
-                                       <?= ($config && $config['color_esquema'] == 'amarillo') ? 'checked' : '' ?>>
-                                Amarillo
-                            </label>
-                            
-                            <label class="color-option color-gris <?= ($config && $config['color_esquema'] == 'gris') ? 'selected' : '' ?>">
-                                <input type="radio" name="color_esquema" value="gris" 
-                                       <?= ($config && $config['color_esquema'] == 'gris') ? 'checked' : '' ?>>
-                                Gris
-                            </label>
-                            
-                            <label class="color-option color-blanco-gris <?= ($config && $config['color_esquema'] == 'blanco_gris') ? 'selected' : '' ?>">
-                                <input type="radio" name="color_esquema" value="blanco_gris" 
-                                       <?= ($config && $config['color_esquema'] == 'blanco_gris') ? 'checked' : '' ?>>
-                                Blanco y Gris
-                            </label>
+                        <div class="form-grid two-cols" style="margin-top:20px; gap:20px;">
+                            <div class="color-card" style="background:#f5f5f5; border-radius:10px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.05); display:flex; flex-direction:column; align-items:center;">
+                                <label for="color_primario" style="font-weight:bold; margin-bottom:10px;">Color primario</label>
+                                <input type="color" id="color_primario" name="color_primario" value="<?= htmlspecialchars($config['color_primario'] ?? '#1a237e') ?>" style="width:60px; height:60px; border:none; background:transparent; cursor:pointer;">
+                                <div style="margin-top:10px; font-size:14px; color:#333;">Ejemplo</div>
+                                <div style="width:100%; height:20px; background:<?= htmlspecialchars($config['color_primario'] ?? '#1a237e') ?>; border-radius:5px; margin-top:8px;"></div>
+                            </div>
+                            <div class="color-card" style="background:#f5f5f5; border-radius:10px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.05); display:flex; flex-direction:column; align-items:center;">
+                                <label for="color_secundario" style="font-weight:bold; margin-bottom:10px;">Color secundario</label>
+                                <input type="color" id="color_secundario" name="color_secundario" value="<?= htmlspecialchars($config['color_secundario'] ?? '#FFC107') ?>" style="width:60px; height:60px; border:none; background:transparent; cursor:pointer;">
+                                <div style="margin-top:10px; font-size:14px; color:#333;">Ejemplo</div>
+                                <div style="width:100%; height:20px; background:<?= htmlspecialchars($config['color_secundario'] ?? '#FFC107') ?>; border-radius:5px; margin-top:8px;"></div>
+                            </div>
                         </div>
                     </div>
                     
