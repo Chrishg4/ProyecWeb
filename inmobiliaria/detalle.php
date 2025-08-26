@@ -71,20 +71,173 @@ try {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        .property-header {
-            background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%);
-            color: white;
-            padding: 40px 0;
-        }
-        
-        .property-header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        .header-navbar-realstate {
+    background: #0a0d15;
+    width: 100%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    padding: 0;
+}
+.navbar-realstate {
+    max-width: 1700px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  
+    box-sizing: border-box;
+}
+.navbar-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 12px;
+    width: 170px;
+}
+.navbar-logo-img {
+    height: 78px;
+    margin-bottom: 0;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.navbar-social {
+    display: flex;
+    gap: 10px;
+    margin-top: 0;
+}
+.navbar-social a {
+    background: #fff;
+    color: #181b23;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    border: 2px solid #e0e0e0;
+    transition: box-shadow 0.2s, border 0.2s, background 0.2s, color 0.2s;
+}
+.navbar-social a:nth-child(1) { color: #3b5998; }
+.navbar-social a:nth-child(2) { color: #e53935; }
+.navbar-social a:nth-child(3) { color: #c13584; }
+.navbar-social a:hover { background: #ffd700; color: #181b23; border: 2px solid #ffd700; }
+
+.navbar-right-block {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    flex: 1;
+    margin-top: 10px;
+}
+.navbar-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    width: 100%;
+    gap: 24px;
+}
+.perfil-icon .perfil-circulo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: #ffd700;
+    border: 2px solid #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    overflow: hidden;
+    position: relative;
+}
+.perfil-icon img {
+    width: 38px;   /* Más grande que antes */
+    height: 38px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+    border: none;
+    position: relative;
+    z-index: 1;
+}
+.navbar-menu-realstate {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: -25px;    /* Más pegado arriba */
+}
+.navbar-menu-realstate ul {
+    display: flex;
+    gap: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+.navbar-menu-realstate ul li {
+    display: flex;
+    align-items: center;
+}
+.navbar-menu-realstate ul li a {
+    color: #ffd700;
+    font-weight: bold;
+    font-size: 1.13rem;
+    letter-spacing: 1px;
+    text-decoration: none;
+    transition: color 0.2s;
+    padding: 8px 12px;
+    border-bottom: none;
+}
+.navbar-menu-realstate ul li a:hover {
+    color: #fff;
+}
+.menu-sep {
+    color: #ffd700 !important;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 0 2px;
+    user-select: none;
+}
+.navbar-search {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 20px;
+    padding: 2px 16px;
+    margin-top: 1px;    /* Más pegado arriba */
+    margin-bottom: 8px; /* Más espacio abajo */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    width: 260px;
+    justify-content: flex-end;
+}
+.navbar-search input {
+    background: transparent;
+    border: none;
+    color: #181b23;
+    outline: none;
+    padding: 8px 8px;
+    font-size: 1.08rem;
+    width: 180px;
+}
+.navbar-search button {
+    background: none;
+    border: none;
+    color: #181b23;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 4px;
+}
+@media (max-width: 1100px) {
+    .navbar-realstate { flex-direction: column; height: auto; padding: 12px; }
+    .navbar-right-block { align-items: flex-end; }
+    .navbar-menu-realstate ul { gap: 10px; }
+}
+
         
         .property-title-section h1 {
             font-size: 36px;
@@ -461,51 +614,58 @@ try {
 </head>
 <body class="<?= $config ? 'color-' . $config['color_esquema'] : 'color-azul' ?>">
         <!-- Header -->
-        <header class="header" style="background: #02050e; width: 100%; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
-            <div class="header-container" style="max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 32px; height: 70px;">
-                <div class="logo" style="display: flex; align-items: center; height: 60px;">
-                    <?php 
-                        $logo_navbar = 'images/logo.png'; // por defecto
-                        if ($config && $config['logo_navbar'] && file_exists('uploads/logos/' . $config['logo_navbar'])) {
-                                $logo_navbar = 'uploads/logos/' . $config['logo_navbar'];
-                        }
-                    ?>
-                    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="logo-img">
-                </div>
-                <nav style="flex: 1;">
-                    <ul class="nav-menu" style="display: flex; gap: 32px; list-style: none; margin: 0; padding: 0; justify-content: center; align-items: center;">
-                        <li><a href="index.php" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">INICIO</a></li>
-                        <li><a href="index.php#quienes-somos" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">QUIENES SOMOS</a></li>
-                        <li><a href="propiedades.php?tipo=alquiler" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">ALQUILERES</a></li>
-                        <li><a href="propiedades.php?tipo=venta" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">VENTAS</a></li>
-                        <li><a href="index.php#contacto" style="color: #ffd700; font-weight: 600; font-size: 1.08rem; letter-spacing: 1px; text-decoration: none; transition: color 0.2s;">CONTÁCTENOS</a></li>
-                    </ul>
-                </nav>
-                <div class="header-right" style="display: flex; align-items: center; gap: 18px;">
-                    <form method="GET" action="index.php" style="display: flex; align-items: center; background: #181b23; border-radius: 20px; padding: 2px 10px;">
-                        <input type="text" name="buscar" class="search-input" placeholder="Buscar propiedades..." style="background: transparent; border: none; color: #fff; outline: none; padding: 6px 8px; font-size: 1rem; width: 120px;">
-                        <button type="submit" class="search-btn" style="background: none; border: none; color: #ffd700; font-size: 1.1rem; cursor: pointer; padding: 0 4px;">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                    <div class="social-icons" style="display: flex; align-items: center; gap: 12px;">
-                        <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="login.php" class="login-icon" style="color: #ffd700; font-size: 1.2rem; position: relative;">
-                            <i class="fas fa-user"></i>
-                            <span class="notification-badge" style="position: absolute; top: -7px; right: -10px; background: #e53935; color: #fff; border-radius: 50%; font-size: 0.7rem; padding: 2px 5px; min-width: 18px; text-align: center;">4</span>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </header>
+       <?php
+// Coloca esto antes del header para definir el logo
+$logo_navbar = 'images/logo.png';
+if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_exists('uploads/logos/' . $config['logo_navbar'])) {
+    $logo_navbar = 'uploads/logos/' . $config['logo_navbar'];
+}
+?>
+<header class="header-navbar-realstate">
+    <div class="navbar-realstate">
+        <!-- IZQUIERDA: Logo y redes en columna -->
+       <div class="navbar-left">
+    <img src="<?= $logo_navbar ?>" alt="UTH Solutions Logo" class="navbar-logo-img">
+    <div class="social-icons" style="display: flex; align-items: center; gap: 12px;">
+        <a href="<?= $config['facebook_url'] ?? '#' ?>" class="facebook" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="<?= $config['youtube_url'] ?? '#' ?>" class="youtube" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+            <i class="fab fa-youtube"></i>
+        </a>
+        <a href="<?= $config['instagram_url'] ?? '#' ?>" class="instagram" target="_blank" style="color: #ffd700; font-size: 1.2rem;">
+            <i class="fab fa-instagram"></i>
+        </a>
+    </div>
+</div>
+        <!-- DERECHA: Menú y perfil -->
+        <div class="navbar-right-block">
+    <div class="navbar-top">
+            <a href="login.php" class="login-icon" style="display: flex; align-items: center;">
+                <img src="images/perfilLogo.png" alt="Perfil" style="width: 90px; margin-top:-10px; height: 90px;  padding: 1px;">
+            </a>
+    </div>
+    <nav class="navbar-menu-realstate">
+        <ul>
+            <li><a href="#inicio">INICIO</a></li>
+            <li><span class="menu-sep">|</span></li>
+            <li><a href="#quienes-somos">QUIENES SOMOS</a></li>
+            <li><span class="menu-sep">|</span></li>
+            <li><a href="#alquileres">ALQUILERES</a></li>
+            <li><span class="menu-sep">|</span></li>
+            <li><a href="#ventas">VENTAS</a></li>
+            <li><span class="menu-sep">|</span></li>
+            <li><a href="#contactenos">CONTACTENOS</a></li>
+        </ul>
+    </nav>
+    <form method="GET" action="index.php" class="navbar-search">
+        <input type="text" name="buscar" placeholder="Buscar..." value="<?= htmlspecialchars($busqueda) ?>">
+        <button type="submit"><i class="fas fa-search"></i></button>
+    </form>
+</div>
+        </div>
+    </div>
+</header>
 
     <!-- Property Header -->
     <section class="property-header">

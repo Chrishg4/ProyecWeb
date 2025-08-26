@@ -442,13 +442,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
     .navbar-right-block { align-items: flex-end; }
     .navbar-menu-realstate ul { gap: 10px; }
 }
-.menu-sep {
-    color: #ffd700;
-    font-weight: bold;
-    font-size: 1.3rem;
-    padding: 0 2px;
-    user-select: none;
-}
+
 .footer-realstate {
     background: #ffd700;
     color: #181b23;
