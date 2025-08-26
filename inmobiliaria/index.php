@@ -77,33 +77,38 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
     <style>
         :root {
             <?php
-            $esquema = 'azul'; // por defecto
-            if ($config && isset($config['color_esquema']) && !empty($config['color_esquema'])) {
-                $esquema = $config['color_esquema'];
-            }
-            
-            switch($esquema) {
-                case 'amarillo':
-                    echo '--color-primario: #ffd700;';
-                    echo '--color-secundario: #333333;';
-                    echo '--color-hover: #ffed4e;';
-                    break;
-                case 'gris':
-                    echo '--color-primario: #6b7280;';
-                    echo '--color-secundario: #374151;';
-                    echo '--color-hover: #9ca3af;';
-                    break;
-                case 'blanco_gris':
-                    echo '--color-primario: #ffffff;';
-                    echo '--color-secundario: #f5f5f5;';
-                    echo '--color-hover: #e5e5e5;';
-                    break;
-                case 'azul':
-                default:
-                    echo '--color-primario: #1a237e;';
-                    echo '--color-secundario: #303f9f;';
-                    echo '--color-hover: #3f51b5;';
-                    break;
+            if ($config && !empty($config['color_primario']) && !empty($config['color_secundario'])) {
+                echo '--color-primario: ' . htmlspecialchars($config['color_primario']) . ';';
+                echo '--color-secundario: ' . htmlspecialchars($config['color_secundario']) . ';';
+                echo '--color-hover: ' . htmlspecialchars($config['color_secundario']) . ';';
+            } else {
+                $esquema = 'azul'; // por defecto
+                if ($config && isset($config['color_esquema']) && !empty($config['color_esquema'])) {
+                    $esquema = $config['color_esquema'];
+                }
+                switch($esquema) {
+                    case 'amarillo':
+                        echo '--color-primario: #ffd700;';
+                        echo '--color-secundario: #333333;';
+                        echo '--color-hover: #ffed4e;';
+                        break;
+                    case 'gris':
+                        echo '--color-primario: #6b7280;';
+                        echo '--color-secundario: #374151;';
+                        echo '--color-hover: #9ca3af;';
+                        break;
+                    case 'blanco_gris':
+                        echo '--color-primario: #ffffff;';
+                        echo '--color-secundario: #f5f5f5;';
+                        echo '--color-hover: #e5e5e5;';
+                        break;
+                    case 'azul':
+                    default:
+                        echo '--color-primario: #1a237e;';
+                        echo '--color-secundario: #303f9f;';
+                        echo '--color-hover: #3f51b5;';
+                        break;
+                }
             }
             ?>
         }
@@ -112,48 +117,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
             background-color: var(--color-primario) !important;
         }
         
-        .btn-primary {
-            background-color: var(--color-primario) !important;
-            border-color: var(--color-primario) !important;
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--color-hover) !important;
-            border-color: var(--color-hover) !important;
-        }
-        
-        
-        
-        .footer {
-            background-color: var(--color-primario) !important;
-        }
-        
-        .property-card:hover {
-            border-color: var(--color-primario) !important;
-        }
-        
-        .price {
-            color: var(--color-primario) !important;
-        }
-        
-        .navbar-brand {
-            color: white !important;
-        }
-        
-        .navbar ul li a:hover {
-            color: var(--color-hover) !important;
-        }
-        
-        .ver-detalles {
-            background-color: var(--color-primario) !important;
-            border-color: var(--color-primario) !important;
-        }
-        
-        .ver-detalles:hover {
-            background-color: var(--color-hover) !important;
-            border-color: var(--color-hover) !important;
-        }
-        
+
         .banner {
     background-color: var(--color-primario);
     min-height: 500px;
