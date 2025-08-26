@@ -643,6 +643,184 @@ $busqueda = isset($_GET['buscar']) ? $_GET['buscar'] : '';
                 grid-template-columns: 1fr;
             }
         }
+        .footer-realstate {
+    background: #ffd700;
+    color: #181b23;
+    padding: 0;
+    margin-top: 0;
+    font-family: inherit;
+    border-top: 4px solid #23273a;
+}
+.footer-content-realstate {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 32px 24px 18px 24px;
+    gap: 32px;
+}
+.footer-info {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;      /* Centra verticalmente */
+    gap: 28px;                    /* Más espacio entre líneas */
+    font-size: 1.25rem;           /* Más grande */
+    min-height: 220px;            /* Asegura altura */
+    padding-top: 24px;            /* Baja el bloque */
+    padding-bottom: 24px;
+}
+
+.footer-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    font-size: 1.18rem;           /* Más grande */
+}
+
+.footer-item i {
+    font-size: 1.7em;             /* Íconos más grandes */
+    margin-top: 2px;
+    color: #181b23;
+}
+.footer-center {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    min-width: 320px;
+}
+
+.footer-logo {
+    width: 90px;
+    margin-bottom: 8px;
+}
+
+.footer-title {
+    font-size: 1.45rem;
+    font-weight: bold;
+    text-align: center;
+    color: #181b23;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.footer-social-icons {
+    display: flex;
+    gap: 22px;
+    margin-top: 12px;
+    justify-content: center;
+}
+
+.footer-social {
+    background: #23273a;
+    color: #ffd700;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+    transition: background 0.2s, color 0.2s;
+    border: 2px solid #fff;
+}
+.footer-social.facebook:hover { background: #3b5998; color: #fff; }
+.footer-social.youtube:hover { background: #e53935; color: #fff; }
+.footer-social.instagram:hover { background: #8a3ab9; color: #fff; }
+
+.footer-form {
+    flex: 1.2;
+    background: #f5eaea;
+    color: #1a237e;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.10);
+    padding: 22px 28px 18px 28px;
+    min-width: 260px;
+    max-width: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+.footer-form-title {
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-align: center;
+    color: #1a237e;
+    margin-bottom: 12px;
+}
+.footer-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.footer-form label {
+    font-weight: bold;
+    color: #1a237e;
+    margin-bottom: 2px;
+    font-size: 0.98rem;
+}
+.footer-form input,
+.footer-form textarea {
+    width: 100%;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    font-size: 0.98rem;
+    margin-bottom: 4px;
+    resize: none;
+}
+.footer-form textarea {
+    min-height: 48px;
+    max-height: 90px;
+}
+.footer-form button {
+    background: #23273a;
+    color: #ffd700;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 0;
+    font-weight: bold;
+    width: 100%;
+    margin-top: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.footer-form button:hover {
+    background: #ffd700;
+    color: #23273a;
+    border: 1px solid #23273a;
+}
+.footer-copyright {
+    background: #23273a;
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    border-radius: 0;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    font-family: inherit;
+}
+@media (max-width: 900px) {
+    .footer-content-realstate {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+        padding: 24px 8px 12px 8px;
+    }
+    .footer-form {
+        min-width: 0;
+        max-width: 100%;
+        width: 100%;
+    }
+}
     </style>
 </head>
 <body class="<?= $config ? 'color-' . $config['color_esquema'] : 'color-azul' ?>">
@@ -864,59 +1042,60 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
         <?php endif; ?>
     </div>
 
-    <!-- Footer -->
-    <footer class="footer" style="background: #ffd731; color: #02050e; padding: 0; margin-top: 0;">
-        <div style="background: #1a237e; width: 100vw; height: 24px; margin-left: 50%; transform: translateX(-50%); border-radius: 0 0 12px 12px;"></div>
-        <div class="container" style="max-width: 1400px; margin: 0 auto; padding: 0;">
-            <div class="footer-content" style="display: flex; align-items: flex-start; justify-content: space-between; padding: 32px 0 0 0; gap: 32px;">
-                <div style="flex: 1.2; display: flex; flex-direction: column; justify-content: flex-start; gap: 18px;">
-                    <div style="font-size: 1.1rem; color: #181b23; margin-bottom: 10px;">
-                        <span style="display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px;"><i class="fas fa-map-marker-alt" style="font-size: 1.3em;"></i> <span><b>Dirección;</b> Cañas Guanacaste, 100 mts Este<br>Parque de Cañas</span></span>
-                        <span style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;"><i class="fas fa-phone-alt" style="font-size: 1.2em;"></i> <span><b>Teléfono:</b> 8890-2030</span></span>
-                        <span style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-envelope" style="font-size: 1.2em;"></i> <span><b>Email:</b> info@utnrealstate.com</span></span>
-                    </div>
-                </div>
-                <div style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 10px;">
-                    <div style="margin-bottom: 10px;">
-                        <img src="images/default_logo.png" alt="Logo" style="height: 54px; margin-bottom: 8px;">
-                    </div>
-                        <?php
-                            $logo_footer = 'images/logo.png';
-                            if (file_exists('uploads/logos/logo_footer_1756111853.png')) {
-                                $logo_footer = 'uploads/logos/logo_footer_1756111853.png';
-                            }
-                        ?>
-                        <img src="<?= $logo_footer ?>" alt="Logo" class="logo-img">
-                    <div style="display: flex; gap: 18px; justify-content: center; align-items: center; margin-top: 8px;">
-                        <a href="#" style="background: #3b5998; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" style="background: #e53935; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-youtube"></i></a>
-                        <a href="#" style="background: #8a3ab9; color: #fff; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 1.5em;"><i class="fab fa-instagram"></i></a>
-                    </div>
-                </div>
-                <div style="flex: 1.2; display: flex; justify-content: flex-end;">
-                    <div style="background: #e5d6d6; color: #1a237e; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.10); padding: 22px 28px 18px 28px; min-width: 320px; max-width: 350px;">
-                        <div style="font-size: 1.2rem; font-weight: bold; text-align: center; color: #1a237e; margin-bottom: 12px;">Contactanos</div>
-                        <form method="post" action="contacto_footer.php">
-                            <div style="display: flex; flex-direction: column; gap: 8px;">
-                                <label style="font-weight: bold; color: #1a237e;">Nombre:</label>
-                                <input type="text" name="nombre" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
-                                <label style="font-weight: bold; color: #1a237e;">Email:</label>
-                                <input type="email" name="email" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
-                                <label style="font-weight: bold; color: #1a237e;">Teléfono:</label>
-                                <input type="tel" name="telefono" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;">
-                                <label style="font-weight: bold; color: #1a237e;">Mensaje:</label>
-                                <textarea name="mensaje" style="width: 100%; padding: 6px; border-radius: 4px; border: 1px solid #ccc;"></textarea>
-                            </div>
-                            <button type="submit" style="background: #1a237e; color: #ffd700; border: none; border-radius: 4px; padding: 8px 0; font-weight: bold; width: 100%; margin-top: 12px; font-size: 1rem;">Envaír</button>
-                        </form>
-                    </div>
-                </div>
+   <!-- Footer -->
+       <footer class="footer-realstate">
+    <div class="footer-content-realstate">
+        <!-- Columna izquierda: datos -->
+        <div class="footer-info">
+            <div class="footer-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span><b>Dirección:</b> Cañas Guanacaste, 100 mts Este<br>Parque de Cañas</span>
+            </div>
+            <div class="footer-item">
+                <i class="fas fa-phone-alt"></i>
+                <span><b>Teléfono:</b> 8890-2030</span>
+            </div>
+            <div class="footer-item">
+                <i class="fas fa-envelope"></i>
+                <span><b>Email:</b> info@utnrealstate.com</span>
             </div>
         </div>
-        <div style="background: #1a237e; color: #fff; text-align: center; padding: 10px 0; width: 100vw; margin-left: 50%; transform: translateX(-50%); border-radius: 0; font-size: 1rem; letter-spacing: 1px;">
-            Derechos Reservados 2024
+        <!-- Columna centro: logo y redes -->
+        <div class="footer-center">
+            <?php
+                $logo_footer = 'images/logo.png';
+                if (file_exists('uploads/logos/logo_footer_1756111853.png')) {
+                    $logo_footer = 'uploads/logos/logo_footer_1756111853.png';
+                }
+            ?>
+            <img src="<?= $logo_footer ?>" alt="Logo" class="footer-logo">
+            <div class="footer-title">UTN SOLUTIONS<br>REAL STATE</div>
+            <div class="footer-social-icons">
+                <a href="<?= $config['facebook_url'] ?? '#' ?>" target="_blank" class="footer-social facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="<?= $config['youtube_url'] ?? '#' ?>" target="_blank" class="footer-social youtube"><i class="fab fa-youtube"></i></a>
+                <a href="<?= $config['instagram_url'] ?? '#' ?>" target="_blank" class="footer-social instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-    </footer>
+        <!-- Columna derecha: formulario -->
+        <div class="footer-form">
+            <div class="footer-form-title">Contactanos</div>
+            <form method="post" action="contacto_footer.php">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" required>
+                <label>Email:</label>
+                <input type="email" name="email" required>
+                <label>Teléfono:</label>
+                <input type="tel" name="telefono" required>
+                <label>Mensaje:</label>
+                <textarea name="mensaje" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-copyright" style="background-color: #1a237e; padding: 10px 0;">
+        <b>Derechos Reservados 2024</b>
+    </div>
+</footer>
         
 </body>
 </html>
