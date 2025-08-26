@@ -45,6 +45,8 @@ try {
 } catch(PDOException $e) {
     $propiedades = [];
 }
+// Definir variable de búsqueda para evitar warning
+$busqueda = isset($_GET['buscar']) ? $_GET['buscar'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -172,7 +174,6 @@ try {
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 5px;
         }
         
         .property-actions {
@@ -192,6 +193,7 @@ try {
             transition: background 0.3s;
         }
         
+
         .btn-view:hover {
             background: #303f9f;
             color: white;

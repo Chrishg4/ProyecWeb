@@ -60,6 +60,8 @@ try {
 } catch(PDOException $e) {
     $propiedades_similares = [];
 }
+
+$busqueda = isset($_GET['buscar']) ? $_GET['buscar'] : '';
 ?>
 
 <!DOCTYPE html>
@@ -71,7 +73,7 @@ try {
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-    .header-navbar-realstate {
+.header-navbar-realstate {
     background: #0a0d15;
     width: 100%;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
@@ -238,35 +240,57 @@ try {
     .navbar-menu-realstate ul { gap: 10px; }
 }
 
-
         
-        .property-title-section h1 {
-            font-size: 36px;
-            margin-bottom: 10px;
-        }
-        
-        .property-meta {
-            display: flex;
-            gap: 20px;
-            font-size: 14px;
-            opacity: 0.9;
-        }
-        
-        .back-btn {
-            background: rgba(255,255,255,0.2);
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-        
-        .back-btn:hover {
-            background: rgba(255,255,255,0.3);
-            color: white;
-        }
-        
+        .property-header {
+    width: 100%;
+    margin: 0 auto 30px auto;
+    padding-top: 30px;
+}
+.property-header-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.property-title-section h1 {
+    font-size: 2.5rem;
+    color: #1a237e;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.property-meta {
+    display: flex;
+    gap: 20px;
+    font-size: 15px;
+    opacity: 0.9;
+    justify-content: center;
+    color: #333;
+}
+.back-btn {
+    background: #1a237e;
+    color: #fff;
+    padding: 10px 28px;
+    border: none;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    transition: background 0.3s, color 0.3s;
+    display: inline-flex;
+    align-items: center;
+    text-align: center;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+.back-btn:hover {
+    transform: scale(1.07);
+}
         .property-content {
             max-width: 1200px;
             margin: 0 auto;
@@ -519,17 +543,25 @@ try {
         }
         
         .properties-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            display: flex;
+            justify-content: center;
             gap: 30px;
+            flex-wrap: wrap;
         }
-        
+        .property-card {
+            max-width: 350px;
+            width: 100%;
+            margin: 0 10px 30px 10px;
+        }
         .property-card {
             background: white;
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
+            max-width: 350px;
+            width: 100%;
+            margin: 0 auto;
         }
         
         .property-card:hover {
@@ -615,7 +647,7 @@ try {
 </head>
 <body class="<?= $config ? 'color-' . $config['color_esquema'] : 'color-azul' ?>">
         <!-- Header -->
-       <?php
+      <?php
 // Coloca esto antes del header para definir el logo
 $logo_navbar = 'images/logo.png';
 if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_exists('uploads/logos/' . $config['logo_navbar'])) {
@@ -660,7 +692,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
         </ul>
     </nav>
     <form method="GET" action="index.php" class="navbar-search">
-        <input type="text" name="buscar" placeholder="Buscar..." value="<?= htmlspecialchars($busqueda) ?>
+        <input type="text" name="buscar" placeholder="Buscar..." value="<?= htmlspecialchars($busqueda) ?>">
         <button type="submit"><i class="fas fa-search"></i></button>
     </form>
 </div>
@@ -678,11 +710,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                     <span><i class="fas fa-tag"></i> <?= ucfirst($propiedad['tipo']) ?></span>
                     <span><i class="fas fa-calendar"></i> <?= date('d/m/Y', strtotime($propiedad['fecha_creacion'])) ?></span>
                 </div>
-            </div>
-            <a href="propiedades.php?tipo=<?= $propiedad['tipo'] ?>" class="back-btn">
-                <i class="fas fa-arrow-left"></i> Volver a <?= ucfirst($propiedad['tipo']) ?>
-            </a>
-        </div>
+            
     </section>
 
     <!-- Property Content -->
@@ -804,7 +832,11 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                 <?php endif; ?>
             </div>
         </div>
-        
+        </div>
+            <a href="propiedades.php?tipo=<?= $propiedad['tipo'] ?>" class="back-btn">
+                <i class="fas fa-arrow-left"></i> Volver a <?= ucfirst($propiedad['tipo']) ?>
+            </a>
+        </div>
         <!-- Similar Properties -->
         <?php if (!empty($propiedades_similares)): ?>
         <div class="similar-properties">
@@ -885,9 +917,6 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
             Derechos Reservados 2024
         </div>
     </footer>
-                }
-            });
-        });
-    </script>
+        
 </body>
 </html>
