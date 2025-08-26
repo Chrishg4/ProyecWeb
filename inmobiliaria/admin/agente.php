@@ -334,15 +334,6 @@ try {
                 
                 <div class="option-card">
                     <div class="option-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Mis Estadísticas</h3>
-                    <p>Visualiza estadísticas y métricas de tus propiedades y actividad.</p>
-                    <a href="mis-estadisticas.php" class="option-btn">Ver Estadísticas</a>
-                </div>
-                
-                <div class="option-card">
-                    <div class="option-icon">
                         <i class="fas fa-globe"></i>
                     </div>
                     <h3>Ver Sitio Web</h3>

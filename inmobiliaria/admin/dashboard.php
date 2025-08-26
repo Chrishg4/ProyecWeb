@@ -338,14 +338,7 @@ $usuario_actual = obtenerUsuarioActual();
                     <a href="perfil.php" class="option-btn">Editar Perfil</a>
                 </div>
                 
-                <div class="option-card">
-                    <div class="option-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Reportes</h3>
-                    <p>Visualiza estadísticas, reportes de actividad y métricas del sitio web.</p>
-                    <a href="reportes.php" class="option-btn">Ver Reportes</a>
-                </div>
+                
                 
                 <div class="option-card">
                     <div class="option-icon">
