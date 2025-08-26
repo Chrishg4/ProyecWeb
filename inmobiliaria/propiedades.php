@@ -206,7 +206,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                 }
             ?>
             <img src="<?= $logo_footer ?>" alt="Logo" class="footer-logo">
-            <div class="footer-title">UTN SOLUTIONS<br>REAL STATE</div>
+            
             <div class="footer-social-icons">
                 <a href="<?= $config['facebook_url'] ?? '#' ?>" target="_blank" class="footer-social facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="<?= $config['youtube_url'] ?? '#' ?>" target="_blank" class="footer-social youtube"><i class="fab fa-youtube"></i></a>
