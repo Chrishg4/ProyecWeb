@@ -413,41 +413,6 @@ body {
     padding: 60px 0 20px;
 }
 
-.footer-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
-}
-
-.footer-section h3 {
-    color: #1a237e;
-    margin-bottom: 20px;
-    font-size: 18px;
-    font-weight: bold;
-}
-
-.footer-section p,
-.footer-section ul li {
-    color: #333;
-    margin-bottom: 10px;
-    line-height: 1.6;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li a {
-    color: #333;
-    text-decoration: none;
-    transition: color 0.3s;
-}
-
-.footer-section ul li a:hover {
-    color: #1a237e;
-}
-
 .contact-form {
     display: grid;
     gap: 15px;
