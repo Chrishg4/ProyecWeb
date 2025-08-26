@@ -122,9 +122,7 @@ if (isset($_GET['buscar']) && !empty($_GET['buscar'])) {
             border-color: var(--color-hover) !important;
         }
         
-        .section-title {
-            color: var(--color-primario) !important;
-        }
+        
         
         .footer {
             background-color: var(--color-primario) !important;
@@ -689,7 +687,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
     <!-- Propiedades Destacadas -->
     <section class="properties-section destacadas">
         <div class="container">
-            <h2 class="section-title">PROPIEDADES DESTACADAS</h2>
+            <h2 class="section-title" style="color: #fff;">PROPIEDADES DESTACADAS</h2>
             <div class="properties-grid">
                 <?php foreach ($destacadas as $propiedad): ?>
                     <div class="property-card" onclick="window.location.href='detalle.php?id=<?= $propiedad['id'] ?>'" style="cursor: pointer;">
@@ -697,11 +695,9 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                         <div class="property-content">
                             <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
                             <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
-                            <div class="property-price">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
-                            <div class="property-location"><?= htmlspecialchars($propiedad['ubicacion']) ?></div>
-                            <div style="margin-top: 15px;">
-                                <a href="detalle.php?id=<?= $propiedad['id'] ?>" class="btn" style="padding: 10px 20px; font-size: 14px;">Ver Detalles</a>
-                            </div>
+                            <div class="property-price" style="text-align: center; color: #ffd700;">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
+
+                        
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -715,7 +711,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
     <!-- Propiedades en Venta -->
     <section class="properties-section ventas" id="ventas">
         <div class="container">
-            <h2 class="section-title">PROPIEDADES EN VENTA</h2>
+            <h2 class="section-title" style="color: #0e2341;">PROPIEDADES EN VENTA</h2>
             <div class="properties-grid">
                 <?php foreach ($ventas as $propiedad): ?>
                     <div class="property-card" onclick="window.location.href='detalle.php?id=<?= $propiedad['id'] ?>'" style="cursor: pointer;">
@@ -723,11 +719,8 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                         <div class="property-content">
                             <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
                             <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
-                            <div class="property-price">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
-                            <div class="property-location"><?= htmlspecialchars($propiedad['ubicacion']) ?></div>
-                            <div style="margin-top: 15px;">
-                                <a href="detalle.php?id=<?= $propiedad['id'] ?>" class="btn" style="padding: 10px 20px; font-size: 14px;">Ver Detalles</a>
-                            </div>
+                            <div class="property-price" style="text-align: center; color: #1a237e;">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
+
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -741,7 +734,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
     <!-- Propiedades en Alquiler -->
     <section class="properties-section alquiler" id="alquileres">
         <div class="container">
-            <h2 class="section-title">PROPIEDADES EN ALQUILER</h2>
+            <h2 class="section-title" st>PROPIEDADES EN ALQUILER</h2>
             <div class="properties-grid">
                 <?php foreach ($alquileres as $propiedad): ?>
                     <div class="property-card" onclick="window.location.href='detalle.php?id=<?= $propiedad['id'] ?>'" style="cursor: pointer;">
@@ -749,11 +742,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                         <div class="property-content">
                             <h3 class="property-title"><?= htmlspecialchars($propiedad['titulo']) ?></h3>
                             <p class="property-description"><?= htmlspecialchars($propiedad['descripcion_breve']) ?></p>
-                            <div class="property-price">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
-                            <div class="property-location"><?= htmlspecialchars($propiedad['ubicacion']) ?></div>
-                            <div style="margin-top: 15px;">
-                                <a href="detalle.php?id=<?= $propiedad['id'] ?>" class="btn" style="padding: 10px 20px; font-size: 14px;">Ver Detalles</a>
-                            </div>
+                            <div class="property-price" style="text-align: center; color: #ffd700;">Precio: $<?= number_format($propiedad['precio'], 0, '.', ',') ?></div>
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -816,7 +805,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
             </form>
         </div>
     </div>
-    <div class="footer-copyright">
+    <div class="footer-copyright" style="background-color: #1a237e; padding: 10px 0;">
         <b>Derechos Reservados 2024</b>
     </div>
 </footer>

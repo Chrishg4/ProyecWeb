@@ -373,8 +373,11 @@ body {
 .property-price {
     font-size: 24px;
     font-weight: bold;
-    color: #4CAF50;
     margin-bottom: 15px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .property-location {
