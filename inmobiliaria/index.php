@@ -1,6 +1,7 @@
 <?php
 require_once 'sesiones.php';
 require_once 'conexion.php';
+require_once 'includes/configuracion_funciones.php';
 
 // Manejar mensajes de contacto
 $mensaje_contacto = '';
@@ -289,9 +290,9 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                 </div>
                 <div class="about-image" style="flex: 1; display: flex; justify-content: flex-end;">
                     <?php if ($config && isset($config['imagen_quienes_somos']) && $config['imagen_quienes_somos'] && file_exists('images/' . $config['imagen_quienes_somos'])): ?>
-                        <img src="images/<?= htmlspecialchars($config['imagen_quienes_somos']) ?>" alt="Equipo" style="width: 320px; height: 220px; object-fit: cover; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.15);">
+                        <img src="images/<?= htmlspecialchars($config['imagen_quienes_somos']) ?>" alt="Equipo" style="width: 520px; height: 320px; object-fit: cover; border: none; box-shadow: none; border-radius: 0;">
                     <?php else: ?>
-                        <div style="background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%); color: white; padding: 40px; border-radius: 16px; text-align: center; min-width: 320px; min-height: 220px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: 0 2px 10px rgba(0,0,0,0.15);">
+                        <div style="background: #eaeaea; color: #333; padding: 40px; border: none; text-align: center; min-width: 520px; min-height: 320px; display: flex; flex-direction: column; justify-content: center; align-items: center; box-shadow: none; border-radius: 0;">
                             <i class="fas fa-users fa-3x"></i>
                             <span style="margin-top: 20px;">Imagen de equipo</span>
                         </div>
@@ -351,7 +352,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
     <!-- Propiedades en Alquiler -->
     <section class="properties-section alquiler" id="alquileres">
         <div class="container">
-            <h2 class="section-title" st>PROPIEDADES EN ALQUILER</h2>
+            <h2 class="section-title" style="color: #fff;">PROPIEDADES EN ALQUILER</h2>
             <div class="properties-grid">
                 <?php foreach ($alquileres as $propiedad): ?>
                     <div class="property-card" onclick="window.location.href='detalle.php?id=<?= $propiedad['id'] ?>'" style="cursor: pointer;">
@@ -393,10 +394,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
         <!-- Columna centro: logo y redes -->
         <div class="footer-center">
             <?php
-                $logo_footer = 'images/logo.png';
-                if (file_exists('uploads/logos/logo_footer_1756111853.png')) {
-                    $logo_footer = 'uploads/logos/logo_footer_1756111853.png';
-                }
+                $logo_footer = obtenerLogoFooter($config);
             ?>
             <img src="<?= $logo_footer ?>" alt="Logo" class="footer-logo">
             

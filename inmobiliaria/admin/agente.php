@@ -338,17 +338,9 @@ try {
                     </div>
                     <h3>Ver Sitio Web</h3>
                     <p>Visita el sitio web público para ver cómo se ven tus propiedades.</p>
-                    <a href="../index.php" class="option-btn" target="_blank">Ver Sitio</a>
+                    <a href="../index.php" class="option-btn">Ver Sitio</a>
                 </div>
                 
-                <div class="option-card">
-                    <div class="option-icon">
-                        <i class="fas fa-envelope"></i>
-                    </div>
-                    <h3>Mensajes</h3>
-                    <p>Revisa los mensajes de clientes interesados en tus propiedades.</p>
-                    <a href="mensajes.php" class="option-btn">Ver Mensajes</a>
-                </div>
             </div>
         </div>
     </div>

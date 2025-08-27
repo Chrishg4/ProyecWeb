@@ -1,7 +1,0 @@
-<!-- Archivo placeholder para imagen por defecto -->
-<!-- Puedes reemplazar este archivo con una imagen real llamada 'default.jpg' -->
-<!-- Por ahora, este archivo sirve como referencia para saber qué imagen usar por defecto -->
-
-Imagen por defecto necesaria: default.jpg
-Dimensiones recomendadas: 400x300 pixels
-Formato: JPG o PNG

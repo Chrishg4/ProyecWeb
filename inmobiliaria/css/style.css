@@ -250,7 +250,7 @@ body {
 
 .about-text h2 {
     font-size: 36px;
-    color: var(--color-primario);
+    color: #1a237e;
     margin-bottom: 30px;
     font-weight: bold;
 }
@@ -311,20 +311,22 @@ body {
 
 .property-card {
     background: transparent !important;
-   
     overflow: hidden;
-    
+    box-shadow: none !important;
     transition: transform 0.3s, box-shadow 0.3s;
     color: #333;
+    max-width: 350px;
+    width: 100%;
+    margin: 0 auto 30px auto;
 }
 
 .property-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 32px rgba(26, 35, 126, 0.18), 0 1.5px 8px rgba(0,0,0,0.10);
 }
 
 .property-image {
-    height: 200px;
+    height: 370px;
     background-size: cover;
     background-position: center;
     position: relative;
@@ -363,11 +365,9 @@ body {
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 15px;
-    color: #1a237e;
 }
 
 .property-description {
-    color: hsl(0, 8%, 84%);
     margin-bottom: 20px;
     line-height: 1.6;
 }
@@ -395,8 +395,8 @@ body {
 .btn {
     display: inline-block;
     padding: 15px 40px;
-    background: var(--color-secundario);
-    color: var(--color-primario);
+    background: #ffed4e !important;
+    color: #1a237e !important;
     text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
@@ -415,6 +415,9 @@ body {
 /* Footer */
 .footer-realstate {
     background: var(--color-secundario) !important;
+    width: 100vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
 }
 .footer-content-realstate {
     background: var(--color-secundario) !important;
@@ -724,7 +727,7 @@ body {
     border: 1px solid #23273a;
 }
 .footer-copyright {
-    background: #23273a;
+    background: var(--color-primario) !important;
     color: #fff;
     text-align: center;
     padding: 10px 0;
@@ -1229,7 +1232,7 @@ body {
         }
         .property-card {
             background: white;
-            border-radius: 15px;
+           
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             transition: transform 0.3s;
@@ -1499,7 +1502,7 @@ body {
         
         .property-card {
             background: white;
-            border-radius: 15px;
+            
             overflow: hidden;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;

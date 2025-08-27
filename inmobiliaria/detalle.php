@@ -123,11 +123,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
         <div class="property-header-content">
             <div class="property-title-section">
                 <h1><?= htmlspecialchars($propiedad['titulo']) ?></h1>
-                <div class="property-meta">
-                    <span><i class="fas fa-map-marker-alt"></i> <?= htmlspecialchars($propiedad['ubicacion']) ?></span>
-                    <span><i class="fas fa-tag"></i> <?= ucfirst($propiedad['tipo']) ?></span>
-                    <span><i class="fas fa-calendar"></i> <?= date('d/m/Y', strtotime($propiedad['fecha_creacion'])) ?></span>
-                </div>
+                
             
     </section>
 
@@ -161,7 +157,11 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                 <div class="property-info">
                     <h2>Descripción</h2>
                     <div class="property-description">
-                        <?= nl2br(htmlspecialchars($propiedad['descripcion_larga'] ?: $propiedad['descripcion_breve'])) ?>
+                        <strong>Descripción corta:</strong><br>
+                        <?= nl2br(htmlspecialchars($propiedad['descripcion_breve'])) ?>
+                        <br><br>
+                        <strong>Descripción completa:</strong><br>
+                        <?= nl2br(htmlspecialchars($propiedad['descripcion_larga'])) ?>
                     </div>
                     
                     <div class="property-features">
@@ -199,15 +199,8 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                     </div>
                 </div>
                 
-                <!-- Map -->
-                <?php if ($propiedad['mapa']): ?>
-                <div class="map-section">
-                    <h2>Ubicación</h2>
-                    <div class="map-placeholder">
-                        <i class="fas fa-map"></i> Mapa de ubicación
-                    </div>
-                </div>
-                <?php endif; ?>
+                <!-- Mapa de Google Maps debajo del agente (solo en sidebar) -->
+                
             </div>
             
             <!-- Sidebar -->
@@ -218,7 +211,6 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                     <div class="price-type">
                         <?= $propiedad['tipo'] == 'venta' ? 'Precio de Venta' : 'Precio Mensual' ?>
                     </div>
-                    
                     <div class="contact-buttons">
                         <a href="tel:<?= $config['telefono_contacto'] ?? '8800-2030' ?>" class="btn-contact btn-primary">
                             <i class="fas fa-phone"></i> Llamar Ahora
@@ -231,7 +223,6 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                         </a>
                     </div>
                 </div>
-                
                 <!-- Agent Card -->
                 <?php if ($propiedad['agente_nombre']): ?>
                 <div class="agent-card">
@@ -248,6 +239,13 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
                     </div>
                 </div>
                 <?php endif; ?>
+                <!-- Google Maps Card SIEMPRE visible debajo del agente -->
+                <div class="map-section" style="margin-top: 30px;">
+                    <h2>Ubicación</h2>
+                    <div class="map-card" style="background: #fff; border-radius: 16px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 16px; margin-bottom: 24px; display: flex; flex-direction: column; align-items: center;">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15696.4077398779!2d-85.0960567!3d10.41347835!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2scr!4v1756255848026!5m2!1ses!2scr" width="100%" height="350" style="border:0; border-radius: 12px; min-width: 280px; max-width: 600px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
             </div>
         </div>
         </div>
@@ -258,60 +256,7 @@ if ($config && isset($config['logo_navbar']) && $config['logo_navbar'] && file_e
     <!-- Se eliminó la sección de propiedades similares -->
     </div>
 
-   <!-- Footer -->
-       <footer class="footer-realstate">
-    <div class="footer-content-realstate">
-        <!-- Columna izquierda: datos -->
-        <div class="footer-info">
-            <div class="footer-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <span><b>Dirección:</b> Cañas Guanacaste, 100 mts Este<br>Parque de Cañas</span>
-            </div>
-            <div class="footer-item">
-                <i class="fas fa-phone-alt"></i>
-                <span><b>Teléfono:</b> 8890-2030</span>
-            </div>
-            <div class="footer-item">
-                <i class="fas fa-envelope"></i>
-                <span><b>Email:</b> info@utnrealstate.com</span>
-            </div>
-        </div>
-        <!-- Columna centro: logo y redes -->
-        <div class="footer-center">
-            <?php
-                $logo_footer = 'images/logo.png';
-                if (file_exists('uploads/logos/logo_footer_1756111853.png')) {
-                    $logo_footer = 'uploads/logos/logo_footer_1756111853.png';
-                }
-            ?>
-            <img src="<?= $logo_footer ?>" alt="Logo" class="footer-logo">
-          
-            <div class="footer-social-icons">
-                <a href="<?= $config['facebook_url'] ?? '#' ?>" target="_blank" class="footer-social facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="<?= $config['youtube_url'] ?? '#' ?>" target="_blank" class="footer-social youtube"><i class="fab fa-youtube"></i></a>
-                <a href="<?= $config['instagram_url'] ?? '#' ?>" target="_blank" class="footer-social instagram"><i class="fab fa-instagram"></i></a>
-            </div>
-        </div>
-        <!-- Columna derecha: formulario -->
-        <div class="footer-form">
-            <div class="footer-form-title">Contactanos</div>
-            <form method="post" action="contacto_footer.php">
-                <label>Nombre:</label>
-                <input type="text" name="nombre" required>
-                <label>Email:</label>
-                <input type="email" name="email" required>
-                <label>Teléfono:</label>
-                <input type="tel" name="telefono" required>
-                <label>Mensaje:</label>
-                <textarea name="mensaje" required></textarea>
-                <button type="submit">Enviar</button>
-            </form>
-        </div>
-    </div>
-    <div class="footer-copyright" style="background-color: #1a237e; padding: 10px 0;">
-        <b>Derechos Reservados 2024</b>
-    </div>
-</footer>
+  
         
 </body>
 </html>

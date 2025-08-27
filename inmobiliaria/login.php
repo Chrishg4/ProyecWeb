@@ -50,17 +50,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="login-box">
             <div class="login-header">
                 <div class="logo">
-                    <i class="fas fa-home"></i> UTH SOLUTIONS
+                    <i class="fas fa-home"  style="margin-right: 40px;"></i> UTN SOLUTIONS
                 </div>
                 <h2>Iniciar Sesión</h2>
                 <p>Accede al panel administrativo</p>
             </div>
             
-            <div class="demo-info">
-                <h4>Datos de acceso por defecto:</h4>
-                <p><strong>Usuario:</strong> Admin</p>
-                <p><strong>Contraseña:</strong> 123</p>
-            </div>
+           
             
             <?php if ($error): ?>
                 <div class="alert alert-error">
@@ -96,11 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 </button>
             </form>
             
-            <div class="back-home">
-                <a href="index.php">
-                    <i class="fas fa-arrow-left"></i> Volver al inicio
-                </a>
-            </div>
+            
         </div>
     </div>
 </body>
